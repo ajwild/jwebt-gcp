@@ -1,0 +1,27 @@
+{
+	"envs": [
+		"browser",
+		"worker",
+		"jest"
+	],
+	"ignores": [
+		"./*.config.js"
+	],
+	"overrides": [
+		{
+			"files": "!./**/*.test.ts",
+			"plugins": [
+				"functional"
+			],
+			"extends": [
+				"plugin:functional/external-recommended",
+				"plugin:functional/lite"
+			],
+			"rules": {
+				"functional/no-throw-statement": 0
+			}
+		}
+	],
+	"prettier": true,
+	"space": true
+}

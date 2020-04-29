@@ -1,0 +1,54 @@
+{
+  "name": "jwebt-gcp",
+  "version": "0.0.1",
+  "description": "Adapter for preparing Google Cloud Platform credentials for jwebt",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "format": "xo --fix",
+    "lint": "xo",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run test",
+    "test": "npm run lint && npm run unit",
+    "unit": "jest",
+    "preversion": "npm run test",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajwild/jwebt-gcp.git"
+  },
+  "keywords": [
+    "jwt",
+    "jsonwebtoken",
+    "webcrypto",
+    "crypto",
+    "subtle",
+    "web",
+    "browser",
+    "worker",
+    "gcp",
+    "google",
+    "cloud",
+    "platform"
+  ],
+  "author": "Alex Wild",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ajwild/jwebt-gcp/issues"
+  },
+  "homepage": "https://github.com/ajwild/jwebt-gcp#readme",
+  "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "eslint-plugin-functional": "^3.0.1",
+    "jest": "^25.4.0",
+    "ts-jest": "^25.4.0",
+    "typescript": "^3.8.3",
+    "xo": "^0.29.1"
+  }
+}
