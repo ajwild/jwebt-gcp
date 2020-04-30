@@ -6,7 +6,11 @@
   "module": "lib-esm/index.js",
   "types": "lib-esm/index.d.ts",
   "sideEffects": false,
-  "files": ["lib-cjs", "lib-esm", "lib-umd"],
+  "files": [
+    "lib-cjs",
+    "lib-esm",
+    "lib-umd"
+  ],
   "scripts": {
     "build": "npm run build:cjs && npm run build:esm && npm run build:umd",
     "prebuild:cjs": "rimraf lib-cjs",
