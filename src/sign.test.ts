@@ -27,7 +27,7 @@ describe('sign', () => {
     const credentials = { ...fakeCredentials };
     const audience = 'https://logging.googleapis.com/';
 
-    expect(prepareSignOptions({ credentials, audience })).toEqual({
+    expect(prepareSignOptions({ credentials, audience })).toStrictEqual({
       payload: {
         aud: audience,
         iss: credentials.client_email,
@@ -50,7 +50,7 @@ describe('sign', () => {
     const credentials = { ...fakeCredentials, client_email: undefined as any };
     const audience = 'https://logging.googleapis.com/';
 
-    expect(() => prepareSignOptions({ credentials, audience })).toThrowError(
+    expect(() => prepareSignOptions({ credentials, audience })).toThrow(
       new Error("'client_email' value is missing.")
     );
   });
@@ -64,7 +64,7 @@ describe('sign', () => {
     };
     const audience = 'https://logging.googleapis.com/';
 
-    expect(() => prepareSignOptions({ credentials, audience })).toThrowError(
+    expect(() => prepareSignOptions({ credentials, audience })).toThrow(
       new TypeError("'client_email' type must be string, not object.")
     );
   });
@@ -75,7 +75,7 @@ describe('sign', () => {
     const credentials = { ...fakeCredentials, private_key: undefined as any };
     const audience = 'https://logging.googleapis.com/';
 
-    expect(() => prepareSignOptions({ credentials, audience })).toThrowError(
+    expect(() => prepareSignOptions({ credentials, audience })).toThrow(
       "'private_key' value is missing."
     );
   });
@@ -86,7 +86,7 @@ describe('sign', () => {
     const credentials = { ...fakeCredentials, private_key: 1 as any };
     const audience = 'https://logging.googleapis.com/';
 
-    expect(() => prepareSignOptions({ credentials, audience })).toThrowError(
+    expect(() => prepareSignOptions({ credentials, audience })).toThrow(
       new TypeError("'private_key' type must be string, not number.")
     );
   });
@@ -97,7 +97,7 @@ describe('sign', () => {
     const credentials = { ...fakeCredentials };
     const audience = undefined as any;
 
-    expect(() => prepareSignOptions({ credentials, audience })).toThrowError(
+    expect(() => prepareSignOptions({ credentials, audience })).toThrow(
       "'audience' value is missing."
     );
   });
@@ -108,7 +108,7 @@ describe('sign', () => {
     const credentials = { ...fakeCredentials };
     const audience = ['https://logging.googleapis.com/'] as any;
 
-    expect(() => prepareSignOptions({ credentials, audience })).toThrowError(
+    expect(() => prepareSignOptions({ credentials, audience })).toThrow(
       new TypeError("'audience' type must be string, not object.")
     );
   });
@@ -140,7 +140,7 @@ describe('sign', () => {
         audience,
         expiresInSeconds: 'test' as any,
       })
-    ).toThrowError(
+    ).toThrow(
       new TypeError("'expiresInSeconds' type must be number, not string.")
     );
   });
@@ -157,7 +157,7 @@ describe('sign', () => {
         audience,
         expiresInSeconds: -1,
       })
-    ).toThrowError(
+    ).toThrow(
       new RangeError(
         "'expiresInSeconds' should be between 0 and 3600 (1 hour)."
       )
@@ -176,7 +176,7 @@ describe('sign', () => {
         audience,
         expiresInSeconds: 3601,
       })
-    ).toThrowError(
+    ).toThrow(
       new RangeError(
         "'expiresInSeconds' should be between 0 and 3600 (1 hour)."
       )

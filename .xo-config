@@ -20,6 +20,18 @@
 			"rules": {
 				"functional/no-throw-statement": 0
 			}
+		},
+		{
+			"files": "./**/*.test.ts",
+			"plugins": [
+				"jest"
+			],
+			"extends": [
+				"plugin:jest/all"
+			],
+			"rules": {
+				"jest/no-hooks": 0
+			}
 		}
 	],
 	"prettier": true,
