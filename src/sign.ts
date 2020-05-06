@@ -22,7 +22,7 @@ function validateInput({
   readonly private_key: string;
   readonly audience: string;
   readonly expiresInSeconds: number;
-}): null {
+}): boolean {
   type ValidationTuple = readonly [any, string];
   Object.entries({
     client_email: [client_email, 'string'],
@@ -49,7 +49,7 @@ function validateInput({
     );
   }
 
-  return null;
+  return true;
 }
 
 export function prepareSignOptions({
