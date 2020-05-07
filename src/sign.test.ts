@@ -41,6 +41,7 @@ describe('sign', () => {
       algorithm: 'RS256',
       extractable: false,
       keyUsages: ['sign'],
+      subtleCrypto: undefined,
     });
   });
 
@@ -76,7 +77,7 @@ describe('sign', () => {
     const audience = 'https://logging.googleapis.com/';
 
     expect(() => prepareSignOptions({ credentials, audience })).toThrow(
-      "'private_key' value is missing."
+      new Error("'private_key' value is missing.")
     );
   });
 
@@ -98,7 +99,7 @@ describe('sign', () => {
     const audience = undefined as any;
 
     expect(() => prepareSignOptions({ credentials, audience })).toThrow(
-      "'audience' value is missing."
+      new Error("'audience' value is missing.")
     );
   });
 
@@ -181,5 +182,21 @@ describe('sign', () => {
         "'expiresInSeconds' should be between 0 and 3600 (1 hour)."
       )
     );
+  });
+
+  it('should pass SubtleCrypto through', () => {
+    expect.assertions(1);
+
+    const credentials = { ...fakeCredentials };
+    const audience = 'https://logging.googleapis.com/';
+    const subtleCrypto = {};
+
+    expect(
+      prepareSignOptions({
+        credentials,
+        audience,
+        subtleCrypto: subtleCrypto as SubtleCrypto,
+      }).subtleCrypto
+    ).toBe(subtleCrypto);
   });
 });

@@ -1,14 +1,15 @@
 import { SignOptions } from 'jwebt';
 
 export type PrepareSignOptions = {
+  readonly audience: string;
   readonly credentials: {
     readonly [key: string]: any;
     readonly client_email: string;
     readonly private_key: string;
     readonly private_key_id?: string;
   };
-  readonly audience: string;
   readonly expiresInSeconds?: number;
+  readonly subtleCrypto?: SubtleCrypto;
 };
 export { SignOptions } from 'jwebt';
 
@@ -53,9 +54,10 @@ function validateInput({
 }
 
 export function prepareSignOptions({
-  credentials: { client_email, private_key, private_key_id },
   audience,
+  credentials: { client_email, private_key, private_key_id },
   expiresInSeconds = 60 * 60,
+  subtleCrypto,
 }: PrepareSignOptions): SignOptions {
   validateInput({
     client_email,
@@ -82,5 +84,6 @@ export function prepareSignOptions({
     algorithm: 'RS256',
     extractable: false,
     keyUsages: ['sign'],
+    subtleCrypto,
   };
 }
