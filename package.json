@@ -60,7 +60,7 @@
     "eslint-plugin-functional": "^3.0.1",
     "eslint-plugin-jest": "^23.8.2",
     "jest": "^25.4.0",
-    "jwebt": "0.0.2",
+    "jwebt": "0.0.3",
     "rimraf": "^3.0.2",
     "terser-webpack-plugin": "^2.3.6",
     "ts-jest": "^25.4.0",
