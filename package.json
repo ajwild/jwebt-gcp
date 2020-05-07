@@ -1,6 +1,6 @@
 {
   "name": "jwebt-gcp",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Adapter for preparing Google Cloud Platform credentials for jwebt",
   "main": "lib-cjs/index.js",
   "module": "lib-esm/index.js",
